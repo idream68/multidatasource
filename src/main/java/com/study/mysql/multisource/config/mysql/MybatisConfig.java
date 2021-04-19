@@ -14,7 +14,7 @@ import java.util.Map;
 @Configuration
 public class MybatisConfig {
     /**
-     * 读取application配置，构建master-db数据源
+     * 读取配置，构建第一数据源
      */
     @Bean("primaryDataSource")
     @ConfigurationProperties("spring.datasource.druid.primary-db")
@@ -23,7 +23,7 @@ public class MybatisConfig {
     }
 
     /**
-     * 读取application配置，构建slave-db数据源
+     * 读取配置，构建第二数据源
      */
     @Bean("secondDataSource")
     @ConfigurationProperties("spring.datasource.druid.second-db")
@@ -31,6 +31,10 @@ public class MybatisConfig {
         return DruidDataSourceBuilder.create().build();
     }
 
+    /**
+     * 读取配置，构建第三数据源
+     * @return
+     */
     @Bean("thirdDataSource")
     @ConfigurationProperties("spring.datasource.druid.third-db")
     public DataSource thirdDataSource() {
@@ -38,7 +42,7 @@ public class MybatisConfig {
     }
 
     /**
-     * 读取application配置，创建动态数据源
+     * 读取配置，创建动态数据源
      */
     @Bean
     @Primary
