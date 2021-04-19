@@ -1,0 +1,27 @@
+server:
+  port: 18080
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      # 主数据源
+      primary-db:
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/primary
+        username: test
+        password: test
+      # 从数据源
+      second-db:
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/second
+        username: test
+        password: test
+      third-db:
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/third
+        username: test
+        password: test
+logging:
+  path: ./logs/multiSource.log
+  level:
+    com.josen.mydemo20201105: debug
